@@ -13,11 +13,12 @@ dotenv.config({ path: path.join(__dirname, "..", ".env") });
 const app = express();
 const port = Number(process.env.PORT || 5000);
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-  })
-);
+// Izinkan semua origin (termasuk localhost, IP, maupun domain ub.ac.id)
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

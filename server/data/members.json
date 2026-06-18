@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "f3f00cd3-ca02-4ddf-b7eb-e6263fbac5c4",
+    "name": "Shalahuddin Yoga Wardana Abdullah",
+    "role": "Ex 2022 Software",
+    "quote": "Orang Sukun",
+    "photo": "/uploads/1781626824757-00d3242d-043e-4ebe-9fb5-8a8a1c95cddb.jpg",
+    "createdAt": "2026-06-16T16:20:24.761Z",
+    "updatedAt": "2026-06-16T16:21:26.076Z"
+  },
+  {
+    "id": "988becb2-feb3-493c-a505-41becfcfe98c",
+    "name": "Made Wena Harilegawa",
+    "role": "Ex 2022 Coordinator / DevOps",
+    "quote": "Orang Bali",
+    "photo": "/uploads/1781626563508-73992030-4fda-4131-8590-29312d322503.jpg",
+    "createdAt": "2026-06-16T16:16:04.376Z",
+    "updatedAt": "2026-06-16T16:16:04.376Z"
+  },
+  {
+    "id": "c651ce0a-ebb7-4278-899b-ed6d96a2d482",
+    "name": "Dr. Raden Arief Setyawan",
+    "role": "Dosen Pembimbing",
+    "quote": "Direktur DTI Universitas Brawijaya",
+    "photo": "/uploads/1781626486635-rarief.jpg",
+    "createdAt": "2026-06-16T16:14:48.397Z",
+    "updatedAt": "2026-06-16T16:14:48.397Z"
+  },
+  {
+    "id": "f0df5d2d-4a14-42e0-98a3-7d547e0d30cc",
+    "name": "Fahmy Almaliki Dwi Aditya",
+    "role": "2023 Coordinator / DevOps",
+    "quote": "Hidup Seperti Larry",
+    "photo": "/uploads/1781626389432-81c98c19-e2d0-40f1-bb1b-cfd6def9667e.jpg",
+    "createdAt": "2026-06-16T16:10:31.621Z",
+    "updatedAt": "2026-06-16T16:13:10.615Z"
+  }
+]
