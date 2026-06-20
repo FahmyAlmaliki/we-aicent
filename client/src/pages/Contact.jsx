@@ -1,24 +1,26 @@
+import { IconEnvelope, IconInstagram, IconGeoAlt, IconHandshake } from "../components/Icons";
+
 const contacts = [
   {
-    icon: "✉️",
+    icon: IconEnvelope,
     label: "Email",
     value: "aicenter@ub.ac.id",
     href: "mailto:aicenter@ub.ac.id",
   },
   {
-    icon: "📸",
+    icon: IconInstagram,
     label: "Instagram",
     value: "@aicenter.ub",
     href: "https://instagram.com/aicenter.ub",
   },
   {
-    icon: "📍",
+    icon: IconGeoAlt,
     label: "Lokasi",
     value: "Kampus Universitas Brawijaya, Malang, Jawa Timur",
     href: null,
   },
   {
-    icon: "🤝",
+    icon: IconHandshake,
     label: "Kolaborasi",
     value: "Terbuka untuk workshop, riset, dan inisiatif komunitas berbasis AI.",
     href: null,
@@ -49,8 +51,8 @@ export default function Contact() {
               key={item.label}
               className={`bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all animate-fade-up delay-${(i + 1) * 100}`}
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl mb-4">
-                {item.icon}
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
+                <item.icon />
               </div>
               <p className="text-xs font-semibold tracking-widest uppercase text-amber-600 mb-1">{item.label}</p>
               {item.href ? (

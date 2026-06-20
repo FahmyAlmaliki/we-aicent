@@ -4,11 +4,13 @@ const pillars = [
   "Membangun komunitas kolaboratif untuk inovasi berkelanjutan.",
 ];
 
+import { IconRobot, IconEye, IconChat, IconBalance, IconBullseye, IconStar } from "../components/Icons";
+
 const focuses = [
-  { title: "Machine Learning", desc: "Dari regresi linier hingga model deep learning terapan.", icon: "🤖" },
-  { title: "Computer Vision", desc: "Deteksi objek, klasifikasi gambar, dan analisis visual.", icon: "👁️" },
-  { title: "Natural Language Processing", desc: "Pemrosesan teks, chatbot, dan analisis sentimen.", icon: "💬" },
-  { title: "AI Ethics", desc: "Penerapan AI yang bertanggung jawab dan berkeadilan.", icon: "⚖️" },
+  { title: "Machine Learning", desc: "Dari regresi linier hingga model deep learning terapan.", icon: IconRobot },
+  { title: "Computer Vision", desc: "Deteksi objek, klasifikasi gambar, dan analisis visual.", icon: IconEye },
+  { title: "Natural Language Processing", desc: "Pemrosesan teks, chatbot, dan analisis sentimen.", icon: IconChat },
+  { title: "AI Ethics", desc: "Penerapan AI yang bertanggung jawab dan berkeadilan.", icon: IconBalance },
 ];
 
 export default function About() {
@@ -34,7 +36,7 @@ export default function About() {
         {/* Visi & Misi */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm animate-fade-up">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-xl mb-4">🎯</div>
+            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4"><IconBullseye /></div>
             <p className="text-xs font-semibold tracking-widest uppercase text-amber-600 mb-2">Visi</p>
             <h2 className="text-xl font-bold text-navy leading-snug">
               Menjadi pusat pengembangan talenta dan inovasi AI yang progresif.
@@ -42,7 +44,7 @@ export default function About() {
           </div>
 
           <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm animate-fade-up delay-100">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-xl mb-4">🌟</div>
+            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4"><IconStar /></div>
             <p className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-3">Misi</p>
             <ul className="space-y-3">
               {pillars.map((pillar) => (
@@ -79,8 +81,8 @@ export default function About() {
                 key={item.title}
                 className={`bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all animate-fade-up delay-${(i + 1) * 100}`}
               >
-                <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl mb-4">
-                  {item.icon}
+                <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4">
+                  <item.icon />
                 </div>
                 <h3 className="font-bold text-navy mb-2 text-sm">{item.title}</h3>
                 <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>

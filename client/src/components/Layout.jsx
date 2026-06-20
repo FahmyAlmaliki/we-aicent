@@ -60,10 +60,10 @@ export default function Layout() {
                 </div>
               )}
               <div className="leading-tight">
-                <p className={`text-xs font-medium tracking-widest uppercase transition-colors duration-300 ${isTransparent ? "text-white/70" : "text-slate-500"}`}>
+                <p className="text-xs font-medium tracking-widest uppercase text-slate-500">
                   Universitas Brawijaya
                 </p>
-                <p className={`font-bold text-sm transition-colors duration-300 ${isTransparent ? "text-white" : "text-navy"}`}>
+                <p className="font-bold text-sm text-navy">
                   AI Center UB Workshop
                 </p>
               </div>
@@ -79,8 +79,8 @@ export default function Layout() {
                     `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
                         ? isTransparent
-                          ? "bg-white/20 text-white shadow-sm"
-                          : "bg-navy text-white hover:text-white hover:bg-navy shadow-sm"
+                          ? "text-white font-semibold"
+                          : "text-navy font-semibold"
                         : isTransparent
                           ? "text-white/80 hover:text-white hover:bg-white/10"
                           : "text-slate-600 hover:text-navy hover:bg-slate-100"

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { apiFetch } from "../api";
+import { apiFetch, getImageUrl } from "../api";
 import ActivitySlider from "../components/ActivitySlider";
+import { IconFlask, IconHandshake, IconRocket, IconArrowRight } from "../components/Icons";
 
 const stats = [
   { label: "Workshop", value: "20+" },
@@ -12,17 +13,17 @@ const stats = [
 
 const highlights = [
   {
-    icon: "🧪",
+    icon: IconFlask,
     title: "Hands-on Workshop",
     text: "Materi berbasis praktik untuk membangun solusi AI dari ide sampai implementasi.",
   },
   {
-    icon: "🤝",
+    icon: IconHandshake,
     title: "Kolaborasi Lintas Disiplin",
     text: "Menghubungkan mahasiswa, dosen, dan komunitas untuk eksperimen yang relevan.",
   },
   {
-    icon: "🚀",
+    icon: IconRocket,
     title: "Portofolio Nyata",
     text: "Setiap program diarahkan menjadi karya yang dapat dipresentasikan dan diterapkan.",
   },
@@ -30,17 +31,35 @@ const highlights = [
 
 export default function Home() {
   const [activities, setActivities] = useState([]);
+  const [heroBg, setHeroBg] = useState("");
 
   useEffect(() => {
     apiFetch("/api/activities")
       .then(setActivities)
+      .catch(() => {});
+    apiFetch("/api/config")
+      .then((config) => setHeroBg(config.heroBg || ""))
       .catch(() => {});
   }, []);
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-navy via-slate-800 to-slate-900 text-white overflow-hidden">
+      <section
+        className="relative text-white overflow-hidden"
+        style={
+          heroBg
+            ? {
+                backgroundImage: `linear-gradient(to bottom, rgba(10,20,40,0.7), rgba(10,20,40,0.85)), url(${getImageUrl(heroBg)})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : {}
+        }
+      >
+        {!heroBg && (
+          <div className="absolute inset-0 bg-gradient-to-br from-navy via-slate-800 to-slate-900" />
+        )}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-400 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-400 rounded-full blur-3xl" />
@@ -85,21 +104,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* Stats */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-1 transition-all animate-fade-up delay-${(i + 1) * 100}`}
-            >
-              <p className="text-3xl font-extrabold text-navy">{stat.value}</p>
-              <p className="text-sm text-slate-500 mt-1 font-medium">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* About Short */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <div className="bg-gradient-to-br from-navy to-slate-800 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
@@ -120,9 +124,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-navy font-bold text-sm transition-all"
             >
               Selengkapnya
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <IconArrowRight />
             </Link>
           </div>
         </div>
@@ -145,8 +147,8 @@ export default function Home() {
               key={item.title}
               className={`bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all animate-fade-up delay-${(i + 1) * 100}`}
             >
-              <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-2xl mb-4">
-                {item.icon}
+              <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4">
+                <item.icon />
               </div>
               <h3 className="text-lg font-bold text-navy mb-2">{item.title}</h3>
               <p className="text-slate-500 text-sm leading-relaxed">{item.text}</p>

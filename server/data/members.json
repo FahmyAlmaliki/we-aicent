@@ -1,12 +1,87 @@
 [
   {
+    "id": "7a3d324d-3adf-4e06-92b6-5f4241fbfb2c",
+    "name": "Ahmad Hafidzh Alfareza",
+    "role": "Software",
+    "angkatan": "2024",
+    "quote": "Electrical Engineering Student | IoT & Robotics Enthusiast | Exploring AI, Data Centers, and Sustainable Technology to Build Solutions That Matter",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": "",
+    "photo": "/uploads/1781952881884-whatsapp-image-2026-06-20-at-16-57-51.jpeg",
+    "createdAt": "2026-06-20T10:54:41.910Z",
+    "updatedAt": "2026-06-20T10:54:41.910Z"
+  },
+  {
+    "id": "7b7a18bd-c19b-4d33-a841-c90e667d6245",
+    "name": "Galang Putra Ardi Pratama",
+    "role": "Software",
+    "angkatan": "2024",
+    "quote": "Code, Build, Innovate",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": "",
+    "photo": "/uploads/1781938391414-whatsapp-image-2026-06-20-at-13-51-44.jpeg",
+    "createdAt": "2026-06-20T06:53:11.430Z",
+    "updatedAt": "2026-06-20T10:54:50.554Z"
+  },
+  {
+    "id": "bdba1e14-9017-4659-b309-5ae9ced9391a",
+    "name": "Refaldi Ananta Afif",
+    "role": "Ex 2022 Mechanics",
+    "angkatan": "2022",
+    "quote": "Orang Polytron",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": "",
+    "photo": "/uploads/1781938272330-1729482636082.jpg",
+    "createdAt": "2026-06-20T06:51:12.341Z",
+    "updatedAt": "2026-06-20T10:55:16.031Z"
+  },
+  {
+    "id": "49853c0d-5e7e-428b-ab02-20bdadc5392a",
+    "name": "Ariza Fatah Alfendito",
+    "role": "Ex 2022 Mechanics",
+    "angkatan": "2022",
+    "quote": "Dito",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": "",
+    "photo": "/uploads/1781938230833-1724307243382-copy.jpg",
+    "createdAt": "2026-06-20T06:50:30.843Z",
+    "updatedAt": "2026-06-20T06:50:30.843Z"
+  },
+  {
+    "id": "7f1d187f-7f89-433c-82a9-fc4c394fe6e3",
+    "name": "Roy Indra Pratama",
+    "role": "Ex 2022 Software / AI",
+    "angkatan": "2022",
+    "quote": "Orang Jago",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": "",
+    "photo": "/uploads/1781937917924-1711641446124.jpg",
+    "createdAt": "2026-06-20T06:45:17.944Z",
+    "updatedAt": "2026-06-20T06:45:17.944Z"
+  },
+  {
     "id": "f3f00cd3-ca02-4ddf-b7eb-e6263fbac5c4",
     "name": "Shalahuddin Yoga Wardana Abdullah",
     "role": "Ex 2022 Software",
     "quote": "Orang Sukun",
     "photo": "/uploads/1781626824757-00d3242d-043e-4ebe-9fb5-8a8a1c95cddb.jpg",
     "createdAt": "2026-06-16T16:20:24.761Z",
-    "updatedAt": "2026-06-16T16:21:26.076Z"
+    "updatedAt": "2026-06-20T06:49:36.467Z",
+    "angkatan": "2022",
+    "email": "",
+    "linkedin": "https://www.linkedin.com/in/shalahuddin-yoga-wardana-abdullah/",
+    "github": "https://github.com/WardanaYoga",
+    "instagram": "https://www.instagram.com/wardanafrdm_/"
   },
   {
     "id": "988becb2-feb3-493c-a505-41becfcfe98c",
@@ -15,7 +90,12 @@
     "quote": "Orang Bali",
     "photo": "/uploads/1781626563508-73992030-4fda-4131-8590-29312d322503.jpg",
     "createdAt": "2026-06-16T16:16:04.376Z",
-    "updatedAt": "2026-06-16T16:16:04.376Z"
+    "updatedAt": "2026-06-20T06:47:59.476Z",
+    "angkatan": "2022",
+    "email": "wenahari@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/wena-hari/",
+    "github": "https://github.com/WenaHarle",
+    "instagram": "https://www.instagram.com/mw.harle/"
   },
   {
     "id": "c651ce0a-ebb7-4278-899b-ed6d96a2d482",
@@ -24,15 +104,25 @@
     "quote": "Direktur DTI Universitas Brawijaya",
     "photo": "/uploads/1781626486635-rarief.jpg",
     "createdAt": "2026-06-16T16:14:48.397Z",
-    "updatedAt": "2026-06-16T16:14:48.397Z"
+    "updatedAt": "2026-06-20T06:45:35.573Z",
+    "angkatan": "Dosen",
+    "email": "",
+    "linkedin": "",
+    "github": "",
+    "instagram": ""
   },
   {
     "id": "f0df5d2d-4a14-42e0-98a3-7d547e0d30cc",
     "name": "Fahmy Almaliki Dwi Aditya",
-    "role": "2023 Coordinator / DevOps",
+    "role": "Coordinator / DevOps",
     "quote": "Hidup Seperti Larry",
     "photo": "/uploads/1781626389432-81c98c19-e2d0-40f1-bb1b-cfd6def9667e.jpg",
     "createdAt": "2026-06-16T16:10:31.621Z",
-    "updatedAt": "2026-06-18T14:31:17.836Z"
+    "updatedAt": "2026-06-20T10:55:24.678Z",
+    "angkatan": "2023",
+    "email": "fahmyalmaliky87@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/fahmy-almaliki-dwi-aditya-951b732a5/",
+    "github": "https://github.com/FahmyAlmaliki",
+    "instagram": "https://www.instagram.com/nickname_ai/"
   }
 ]

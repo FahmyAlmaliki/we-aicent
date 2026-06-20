@@ -118,6 +118,39 @@ router.delete("/admin/logo", requireAuth, async (req, res, next) => {
   }
 });
 
+router.post("/admin/hero-bg", requireAuth, upload.single("heroBg"), async (req, res, next) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "File background wajib diupload." });
+    }
+    const config = await readConfig();
+    if (config.heroBg?.startsWith("/uploads/")) {
+      const prev = path.join(uploadsDir, path.basename(config.heroBg));
+      await fs.rm(prev, { force: true });
+    }
+    config.heroBg = `/uploads/${req.file.filename}`;
+    await writeConfig(config);
+    return res.json(config);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/admin/hero-bg", requireAuth, async (req, res, next) => {
+  try {
+    const config = await readConfig();
+    if (config.heroBg?.startsWith("/uploads/")) {
+      const prev = path.join(uploadsDir, path.basename(config.heroBg));
+      await fs.rm(prev, { force: true });
+    }
+    config.heroBg = "";
+    await writeConfig(config);
+    return res.json(config);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/admin/angkatan", requireAuth, async (req, res, next) => {
   try {
     const { nama } = req.body;
@@ -158,7 +191,7 @@ router.post(
   upload.single("photo"),
   async (req, res, next) => {
     try {
-      const { name, role, angkatan, quote, email, linkedin, github } = req.body;
+      const { name, role, angkatan, quote, email, linkedin, github, instagram } = req.body;
 
       if (!name || !role || !quote) {
         return res.status(400).json({ message: "Nama, jabatan, dan pesan wajib diisi." });
@@ -175,6 +208,7 @@ router.post(
         email: email || "",
         linkedin: linkedin || "",
         github: github || "",
+        instagram: instagram || "",
         photo: req.file ? `/uploads/${req.file.filename}` : "",
         createdAt: now,
         updatedAt: now,
@@ -197,7 +231,7 @@ router.put(
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { name, role, angkatan, quote, email, linkedin, github } = req.body;
+      const { name, role, angkatan, quote, email, linkedin, github, instagram } = req.body;
       const members = await readMembers();
       const memberIndex = members.findIndex((member) => member.id === id);
 
@@ -221,6 +255,7 @@ router.put(
         email: email !== undefined ? email : currentMember.email ?? "",
         linkedin: linkedin !== undefined ? linkedin : currentMember.linkedin ?? "",
         github: github !== undefined ? github : currentMember.github ?? "",
+        instagram: instagram !== undefined ? instagram : currentMember.instagram ?? "",
         photo: req.file ? `/uploads/${req.file.filename}` : currentMember.photo,
         updatedAt: new Date().toISOString(),
       };

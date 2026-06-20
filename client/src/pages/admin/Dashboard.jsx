@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { apiFetch, getImageUrl } from "../../api";
 import ActivityForm from "./ActivityForm";
 import MemberForm from "./MemberForm";
+import { IconX, IconMountain, IconClipboard, IconPeople, IconEnvelope, IconLinkedIn, IconGitHub, IconInstagram } from "../../components/Icons";
 
 export default function Dashboard() {
   const [members, setMembers] = useState([]);
@@ -22,6 +23,10 @@ export default function Dashboard() {
   const [savingLogo, setSavingLogo] = useState(false);
   const [logoPreview, setLogoPreview] = useState(null);
   const logoInputRef = useRef(null);
+  const [heroBg, setHeroBg] = useState("");
+  const [savingHeroBg, setSavingHeroBg] = useState(false);
+  const [heroBgPreview, setHeroBgPreview] = useState(null);
+  const heroBgInputRef = useRef(null);
   const navigate = useNavigate();
 
   async function loadData() {
@@ -37,6 +42,7 @@ export default function Dashboard() {
       setActivities(activityData);
       setAngkatanList(angkatanData);
       setLogo(configData.logo || "");
+      setHeroBg(configData.heroBg || "");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -67,6 +73,36 @@ export default function Dashboard() {
       setError(err.message);
     } finally {
       setSavingLogo(false);
+    }
+  }
+
+  async function handleHeroBgUpload() {
+    const file = heroBgInputRef.current?.files[0];
+    if (!file) return;
+    try {
+      setSavingHeroBg(true);
+      const formData = new FormData();
+      formData.append("heroBg", file);
+      const result = await apiFetch("/api/admin/hero-bg", { method: "POST", body: formData });
+      setHeroBg(result.heroBg);
+      setHeroBgPreview(null);
+      if (heroBgInputRef.current) heroBgInputRef.current.value = "";
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSavingHeroBg(false);
+    }
+  }
+
+  async function handleHeroBgDelete() {
+    if (!window.confirm("Hapus background hero? Hero akan kembali menggunakan gradasi bawaan.")) return;
+    try {
+      const result = await apiFetch("/api/admin/hero-bg", { method: "DELETE" });
+      setHeroBg(result.heroBg);
+      setHeroBgPreview(null);
+      if (heroBgInputRef.current) heroBgInputRef.current.value = "";
+    } catch (err) {
+      setError(err.message);
     }
   }
 
@@ -120,6 +156,7 @@ export default function Dashboard() {
     payload.append("email", formData.email || "");
     payload.append("linkedin", formData.linkedin || "");
     payload.append("github", formData.github || "");
+    payload.append("instagram", formData.instagram || "");
     if (formData.photoFile) payload.append("photo", formData.photoFile);
 
     try {
@@ -223,7 +260,7 @@ export default function Dashboard() {
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm flex items-center justify-between">
             {error}
-            <button type="button" onClick={() => setError("")} className="text-red-400 hover:text-red-600 ml-4">✕</button>
+            <button type="button" onClick={() => setError("")} className="text-red-400 hover:text-red-600 ml-4"><IconX /></button>
           </div>
         )}
 
@@ -308,6 +345,70 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Hero Background Management */}
+        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-slate-100">
+            <p className="text-xs font-semibold tracking-widest uppercase text-purple-600">Hero Background</p>
+            <h3 className="font-bold text-navy">Kelola Background Halaman Utama</h3>
+          </div>
+          <div className="p-6">
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-xs text-slate-400 font-medium">Background saat ini</p>
+                <div className="w-48 h-32 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden">
+                  {heroBgPreview ? (
+                    <img src={heroBgPreview} alt="Preview" className="w-full h-full object-cover" />
+                  ) : heroBg ? (
+                    <img src={getImageUrl(heroBg)} alt="Hero BG" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="flex flex-col items-center gap-1 text-slate-300 text-xs">
+                      <IconMountain />
+                      <span>Gradasi bawaan</span>
+                    </div>
+                  )}
+                </div>
+                {heroBgPreview && (
+                  <span className="text-xs text-amber-600 font-medium">Preview — belum disimpan</span>
+                )}
+              </div>
+              <div className="flex-1 space-y-3">
+                <p className="text-sm text-slate-500">
+                  Upload gambar background untuk hero section (16:9 landscape recommended). Background akan tampil di halaman utama website.
+                </p>
+                <input
+                  ref={heroBgInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) setHeroBgPreview(URL.createObjectURL(file));
+                  }}
+                  className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100 transition cursor-pointer"
+                />
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleHeroBgUpload}
+                    disabled={savingHeroBg || !heroBgPreview}
+                    className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold transition disabled:opacity-40"
+                  >
+                    {savingHeroBg ? "Menyimpan..." : "Simpan Background"}
+                  </button>
+                  {heroBg && (
+                    <button
+                      type="button"
+                      onClick={handleHeroBgDelete}
+                      className="px-4 py-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 text-sm font-medium transition"
+                    >
+                      Hapus Background
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Angkatan Management */}
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-100">
@@ -325,10 +426,10 @@ export default function Dashboard() {
                   <button
                     type="button"
                     onClick={() => handleAngkatanDelete(a)}
-                    className="text-slate-400 hover:text-red-500 transition ml-1 leading-none"
+                    className="text-slate-400 hover:text-red-500 transition ml-1"
                     title="Hapus angkatan"
                   >
-                    ×
+                    <IconX />
                   </button>
                 </div>
               ))}
@@ -406,7 +507,7 @@ export default function Dashboard() {
             <div className="p-6 text-slate-400 text-sm text-center">Memuat data...</div>
           ) : activities.length === 0 ? (
             <div className="p-10 text-center text-slate-400">
-              <p className="text-4xl mb-3">📋</p>
+              <div className="mb-3 text-slate-300"><IconClipboard /></div>
               <p className="text-sm">Belum ada kegiatan. Tambahkan sekarang.</p>
             </div>
           ) : (
@@ -491,7 +592,7 @@ export default function Dashboard() {
             <div className="p-6 text-slate-400 text-sm text-center">Memuat data...</div>
           ) : members.length === 0 ? (
             <div className="p-10 text-center text-slate-400">
-              <p className="text-4xl mb-3">👥</p>
+              <div className="mb-3 text-slate-300"><IconPeople /></div>
               <p className="text-sm">Belum ada anggota. Tambahkan sekarang.</p>
             </div>
           ) : (
@@ -532,20 +633,25 @@ export default function Dashboard() {
                         <div className="flex items-center gap-2">
                           {member.email && (
                             <a href={`mailto:${member.email}`} className="text-slate-400 hover:text-amber-600 transition-colors" title={member.email}>
-                              ✉️
+                              <IconEnvelope />
                             </a>
                           )}
                           {member.linkedin && (
                             <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600 transition-colors" title="LinkedIn">
-                              💼
+                              <IconLinkedIn />
                             </a>
                           )}
                           {member.github && (
                             <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-800 transition-colors" title="GitHub">
-                              🐙
+                              <IconGitHub />
                             </a>
                           )}
-                          {!member.email && !member.linkedin && !member.github && (
+                          {member.instagram && (
+                            <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-pink-600 transition-colors" title="Instagram">
+                              <IconInstagram />
+                            </a>
+                          )}
+                          {!member.email && !member.linkedin && !member.github && !member.instagram && (
                             <span className="text-xs text-slate-300">—</span>
                           )}
                         </div>

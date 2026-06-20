@@ -49,7 +49,7 @@ export async function writeAngkatan(angkatan) {
 }
 
 export async function readConfig() {
-  return readJson(configFile, { logo: "" });
+  return readJson(configFile, { logo: "", heroBg: "" });
 }
 
 export async function writeConfig(config) {

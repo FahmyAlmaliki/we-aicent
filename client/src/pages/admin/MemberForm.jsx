@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { apiFetch, getImageUrl } from "../../api";
+import { IconEnvelope, IconLinkedIn, IconGitHub, IconCamera } from "../../components/Icons";
 
-const emptyState = { name: "", role: "", angkatan: "", quote: "", email: "", linkedin: "", github: "" };
+const emptyState = { name: "", role: "", angkatan: "", quote: "", email: "", linkedin: "", github: "", instagram: "" };
 
 export default function MemberForm({ initialData, onCancel, onSubmit, loading }) {
   const [form, setForm] = useState(emptyState);
@@ -25,6 +26,7 @@ export default function MemberForm({ initialData, onCancel, onSubmit, loading })
             email: initialData.email || "",
             linkedin: initialData.linkedin || "",
             github: initialData.github || "",
+            instagram: initialData.instagram || "",
           }
         : emptyState
     );
@@ -105,10 +107,10 @@ export default function MemberForm({ initialData, onCancel, onSubmit, loading })
         <p className="text-sm font-medium text-slate-700 mb-3">
           Kontak <span className="text-slate-400 font-normal">(opsional)</span>
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1.5 flex items-center gap-1.5">
-              <span>✉️</span> Email
+              <IconEnvelope /> Email
             </label>
             <input
               type="email"
@@ -120,7 +122,7 @@ export default function MemberForm({ initialData, onCancel, onSubmit, loading })
           </div>
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1.5 flex items-center gap-1.5">
-              <span>💼</span> LinkedIn
+              <IconLinkedIn /> LinkedIn
             </label>
             <input
               type="url"
@@ -132,13 +134,25 @@ export default function MemberForm({ initialData, onCancel, onSubmit, loading })
           </div>
           <div>
             <label className="block text-xs font-medium text-slate-500 mb-1.5 flex items-center gap-1.5">
-              <span>🐙</span> GitHub
+              <IconGitHub /> GitHub
             </label>
             <input
               type="url"
               value={form.github}
               onChange={set("github")}
               placeholder="https://github.com/..."
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition text-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-slate-500 mb-1.5 flex items-center gap-1.5">
+              <IconCamera /> Instagram
+            </label>
+            <input
+              type="url"
+              value={form.instagram}
+              onChange={set("instagram")}
+              placeholder="https://instagram.com/..."
               className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition text-sm"
             />
           </div>

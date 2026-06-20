@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "29796622-3d7f-4e12-b059-29960e998c86",
+    "title": "Jombang Weather Station Project",
+    "status": "Selesai",
+    "text": "Membuat alat monitor cuaca di jombang",
+    "image": "/uploads/1781953559600-whatsapp-image-2026-06-20-at-18-04-59.jpeg",
+    "createdAt": "2026-06-20T11:05:59.620Z",
+    "updatedAt": "2026-06-20T11:05:59.620Z"
+  },
+  {
+    "id": "9d941d37-a7dd-4dea-b1ec-387dd4009a6f",
+    "title": "Rapat Rutin Project",
+    "status": "Upcoming",
+    "text": "Rapat Rutin Project",
+    "image": "/uploads/1781937716874-whatsapp-image-2026-06-19-at-18-17-14.jpeg",
+    "createdAt": "2026-06-20T06:41:56.885Z",
+    "updatedAt": "2026-06-20T06:41:56.885Z"
+  },
+  {
+    "id": "1c12259c-0cb6-434f-b28e-206623bfbd3b",
+    "title": "PT. Bafain Project",
+    "status": "Selesai",
+    "text": "Pembuatan Alarm Metal Detector Conveyor",
+    "image": "/uploads/1781937689216-whatsapp-image-2026-05-27-at-1-46-37-pm.jpg",
+    "createdAt": "2026-06-20T06:41:29.910Z",
+    "updatedAt": "2026-06-20T06:41:29.910Z"
+  }
+]

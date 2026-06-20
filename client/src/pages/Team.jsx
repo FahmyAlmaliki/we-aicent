@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "../api";
 import MemberCard from "../components/MemberCard";
+import { IconPeople } from "../components/Icons";
 
 
 function categorizeMembersToSections(members, angkatanList) {
@@ -148,7 +149,7 @@ export default function Team() {
 
         {!loading && !error && members.length === 0 && (
           <div className="text-center py-20 text-slate-400">
-            <p className="text-5xl mb-4">👥</p>
+            <div className="mb-4 text-slate-300"><IconPeople /></div>
             <p className="text-lg font-semibold">Belum ada anggota yang ditambahkan.</p>
             <p className="text-sm mt-1">Tambahkan melalui dashboard admin.</p>
           </div>

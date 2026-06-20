@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getImageUrl } from "../../api";
+import { IconImage } from "../../components/Icons";
 
 const emptyState = {
   title: "",
@@ -96,7 +97,7 @@ export default function ActivityForm({ initialData, onCancel, onSubmit, loading 
             />
           ) : (
             <div className="text-slate-400 text-sm">
-              <p className="text-2xl mb-2">🖼️</p>
+              <div className="mb-2"><IconImage /></div>
               <p>Klik untuk pilih gambar</p>
               <p className="text-xs mt-1">JPG, PNG (rasio 16:9 disarankan untuk tampilan terbaik)</p>
             </div>

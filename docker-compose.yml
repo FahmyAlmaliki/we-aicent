@@ -5,8 +5,8 @@ services:
     env_file:
       - .env
     volumes:
-      - server_uploads:/app/uploads
-      - server_data:/app/data
+      - ./server/uploads:/app/uploads
+      - ./server/data:/app/data
     restart: unless-stopped
 
   client:
@@ -19,7 +19,3 @@ services:
     depends_on:
       - server
     restart: unless-stopped
-
-volumes:
-  server_uploads:
-  server_data:

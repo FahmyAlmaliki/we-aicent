@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiFetch, getImageUrl } from "../api";
+import { IconClipboard } from "../components/Icons";
 
 const STATUS_COLORS = {
   "Workshop Inti": "bg-blue-100 text-blue-700",
@@ -65,7 +66,7 @@ export default function Activities() {
 
         {!loading && !error && activities.length === 0 && (
           <div className="text-center py-20 text-slate-400">
-            <p className="text-5xl mb-4">📋</p>
+            <div className="mb-4 text-slate-300"><IconClipboard /></div>
             <p className="text-lg font-semibold">Belum ada kegiatan yang ditambahkan.</p>
             <p className="text-sm mt-1">Tambahkan melalui dashboard admin.</p>
           </div>
